@@ -1,57 +1,50 @@
-# ✨ EtchNFT Landing + Mini App
+# DoxQuest
 
-> Mint memories. Phygital drops sealed on-chain.  
-> Built with Astro, Tailwind, and Cloudflare.
+**DoxQuest** is a real-world, AI-powered treasure hunt platform developed by **Cozyartz Media Group**. It blends immersive storytelling, intricate puzzles, and GPS-based discovery into a modular, scalable experience. Designed for creators and adventurers, DoxQuest enables the launch of interactive quests powered by GPT-generated lore and clues.
 
-![EtchNFT Logo](public/etchlogo.png)
+## Features
 
----
+- 🔍 **AI-Generated Clues & Lore**  
+  Uses GPT to dynamically generate riddles, narratives, and multi-layered challenges that adapt to each quest.
 
-## 🚀 Features
+- 🗺️ **Location-Based Gameplay**  
+  Create and deploy hunts tied to real-world coordinates or virtual geocached locations.
 
-- **⚡️ Astro + TailwindCSS** for fast, responsive theming
-- **🎯 Cloudflare D1** for database-backed waitlists & orders
-- **🔐 Cloudflare Workers** for custom API routes & rate-limiting
-- **📬 Formaloo + Email Token Verification** built-in
-- **📡 Solana API Integration** via Helius (coming live)
-- **💖 Waitlist, roadmap, supporters, pitch & about pages**
-- **🎨 Animations + Starfield + Dark Theme**
+- 🧩 **Modular Puzzle System**  
+  Craft scalable, multi-stage quests with configurable difficulty and branching logic.
 
----
+- 🧠 **Customizable Quest Logic**  
+  Define and manage quests through structured JSON or Markdown files for fast iteration.
 
-## 📂 Project Structure
+- 💰 **Monetization-Ready**  
+  Supports freemium models, clue unlocks, memberships, and digital collectibles.
+
+## Tech Stack
+
+- **Frontend:** React + Tailwind CSS  
+- **Backend:** Cloudflare Workers (or Node.js variant)  
+- **AI Integration:** OpenAI GPT or Workers AI  
+- **Storage:** Cloudflare D1 or KV for session, clue, and user state
+
+## Getting Started
+
+Clone the repo and install dependencies:
 
 ```bash
-src/
-  assets/         # Images like star.png
-  components/     # Shared UI components
-  pages/          # All route-level .astro pages
-  styles/         # Tailwind setup + globals
-  index.ts        # Worker API logic (CF)
-public/           # Static assets
-migrations/       # D1 schema (init.sql)
-🧪 Local Dev
-bash
-Copy
-Edit
+git clone https://github.com/cozyartz/doxquest.git
+cd doxquest
 pnpm install
-pnpm run dev
-To test worker APIs locally:
+pnpm dev
+Roadmap
+ Player account system with save/load progress
 
-bash
-Copy
-Edit
-pnpm wrangler dev
-🧱 Deployment
-This project uses both:
+ Global and regional quests
 
-🌐 Cloudflare Pages (for the Astro site)
+ Dynamic difficulty scaling based on solve history
 
-☁️ Cloudflare Workers (for API + database)
+ Community-created quest builder
 
-Make sure to deploy both!
+ Optional on-chain rewards or badges
 
-📖 License
-MIT — Built with ❤️ by Cozyartz Media
-
-EtchNFT isn’t just a drop. It’s a ritual.
+License
+MIT © Cozyartz Media Group
