@@ -1,0 +1,25 @@
+// src/pages/quest/[slug].astro
+---
+import { Astro } from 'astro';
+const { slug } = Astro.params;
+---
+
+<html>
+  <head>
+    <title>DoxQuest - Quest: {slug}</title>
+  </head>
+  <body>
+    <main>
+      <h1>Quest: {slug}</h1>
+      <form method="POST" action="/api/scan" enctype="multipart/form-data">
+        <label for="file">Upload QR Image:</label>
+        <input type="file" name="file" accept="image/*" />
+
+        <label for="uid">Or enter NFC UID:</label>
+        <input type="text" name="uid" placeholder="e.g. 04AABBCCDDEE" />
+
+        <button type="submit">Scan</button>
+      </form>
+    </main>
+  </body>
+</html>

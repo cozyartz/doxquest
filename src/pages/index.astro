@@ -1,0 +1,27 @@
+---
+import "@fontsource-variable/inter";
+import Header from "~/components/header.astro";
+import Footer from "~/components/footer.astro";
+import Splash from "~/components/splash.astro";
+import MetaHead from "~/components/meta-head.astro";
+import "~/styles/index.css";
+
+const { generator, site } = Astro;
+const title = "etchNFT — Custom Phygital Drops";
+const description = "etchNFT lets you mint memories — physical and digital collectibles permanently sealed on-chain. No crypto required.";
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark" view-transition>
+  <MetaHead {title} {description} />
+
+  <body class="h-full bg-black text-white font-sans overflow-x-hidden selection:bg-pink-600 selection:text-white">
+    <Header />
+
+    <main>
+      <Splash />
+    </main>
+
+    <Footer />
+  </body>
+</html>

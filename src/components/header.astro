@@ -1,0 +1,138 @@
+---
+import star from "~/assets/star.png";
+import Footer from "~/components/footer.astro";
+import MetaHead from "~/components/meta-head.astro";
+import "@fontsource-variable/inter";
+import "~/styles/index.css";
+
+const title = "EtchNFT — About";
+const description = "Why we’re here. What we believe. What we’re building.";
+const isNotHome = Astro.url.pathname !== "/";
+---
+
+<header
+  id="page-header"
+  class="fixed top-0 z-40 w-full bg-black/80 backdrop-blur border-b border-gray-800 text-white px-6 py-3 shadow-md transition-all"
+>
+  <div class="mx-auto flex max-w-7xl items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <img src="/etchlogo.png" alt="etchNFT logo" class="h-10 w-10 object-contain transition-transform group-hover:scale-105" />
+      <span class="hidden sm:block text-lg font-semibold tracking-tight text-white group-hover:text-pink-400 transition">
+        etchNFT
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden sm:block">
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        {isNotHome && (
+          <li>
+            <a href="/" class="hover:text-pink-400 hover:underline underline-offset-4 transition">
+              Home
+            </a>
+          </li>
+        )}
+        <li>
+          <a href="/waitlist" class="hover:text-pink-400 hover:underline underline-offset-4 transition">
+            Waitlist
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Nav Button with Star -->
+    <button
+      id="open-nav-button"
+      type="button"
+      class="sm:hidden inline-flex items-center justify-center p-1 rounded-md border border-white/20 glow-button transition"
+      aria-label="Open navigation"
+    >
+      <img
+        src={star.src}
+        alt="Open menu"
+        class="h-8 w-8 object-contain hover:drop-shadow-[0_0_10px_#DB2777] transition"
+      />
+    </button>
+  </div>
+
+  <!-- Mobile Modal Menu with Gradient -->
+  <div
+    id="menu-modal"
+    class="modal pointer-events-none fixed inset-0 z-50 flex items-start justify-center transition-transform transform -translate-y-full opacity-0 duration-300 sm:hidden"
+    aria-hidden="true"
+  >
+    <div class="bg-gradient-to-r from-[#311524] via-[#1B1A34] to-[#123738] w-full max-w-md mx-auto p-8 mt-20 text-white rounded-xl shadow-2xl backdrop-blur-md">
+      <header class="w-full flex justify-end mb-4">
+        <button
+          id="close-nav-button"
+          type="button"
+          class="p-2 rounded border border-white/20 hover:bg-pink-600 transition"
+          aria-label="Close navigation"
+        >
+          <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </header>
+
+      <img src="/etchlogo.png" alt="etchNFT logo" class="h-16 w-16 mb-6 object-contain mx-auto" />
+
+      <nav class="space-y-4 text-lg text-center font-semibold">
+        {isNotHome && (
+          <a href="/" class="block hover:text-pink-400 transition">Home</a>
+        )}
+        <a href="/waitlist" class="block hover:text-pink-400 transition">Join Waitlist</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Script -->
+<script is:inline>
+  const menuModal = document.getElementById("menu-modal");
+  const openBtn = document.getElementById("open-nav-button");
+  const closeBtn = document.getElementById("close-nav-button");
+
+  const openMenu = () => {
+    menuModal.classList.remove("opacity-0", "-translate-y-full", "pointer-events-none");
+    menuModal.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+  };
+
+  const closeMenu = () => {
+    menuModal.classList.add("opacity-0", "-translate-y-full", "pointer-events-none");
+    menuModal.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+  };
+
+  openBtn?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+
+  menuModal?.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+</script>
+
+<noscript>
+  <style>
+    #open-nav-button {
+      display: none;
+    }
+  </style>
+</noscript>
+
+<style>
+  .glow-button {
+    box-shadow: 0 0 12px rgba(219, 39, 119, 0.6), 0 0 24px rgba(219, 39, 119, 0.4);
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 12px rgba(219, 39, 119, 0.6), 0 0 24px rgba(219, 39, 119, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(219, 39, 119, 0.8), 0 0 36px rgba(219, 39, 119, 0.6);
+    }
+  }
+</style>

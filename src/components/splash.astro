@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import dollarImage from "~/assets/dollar.png";
+import Starfield from "~/components/starfield.astro";
+
+const widths = [600, 1000];
+const sizes = "(min-width: 640px) 48vw, 80vw";
+---
+
+<section class="relative min-h-screen bg-black overflow-hidden">
+  <Starfield />
+
+  <div class="relative grid min-h-screen place-items-center px-6 py-24 sm:grid-cols-2">
+    <!-- Launch Text -->
+    <div class="flex flex-col gap-6 sm:justify-self-end text-center sm:text-left max-w-xl z-10">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-xl">
+        The First Drops Are Coming
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed">
+        Custom, on-chain collectibles you can hold in your hand. Plaques. Tees. Acrylic relics. Every piece comes etched and minted.
+      </p>
+      <p class="text-base text-gray-400 leading-relaxed">
+        We’re not selling NFTs. We’re minting memories — physical + digital. Each drop is limited-run, handcrafted, and permanently sealed on-chain.
+      </p>
+      <a
+        href="/waitlist"
+        class="inline-block w-fit rounded-full bg-pink-600 px-6 py-3 text-white font-semibold text-base hover:bg-pink-700 transition"
+      >
+        Join the Waitlist →
+      </a>
+    </div>
+
+    <!-- Floating Etched Dollar Visual (LARGER) -->
+    <div id="floating-asset" class="w-full max-w-[600px] self-start sm:justify-self-start z-0">
+      <Image
+        class="h-full w-full object-contain"
+        src={dollarImage}
+        widths={widths}
+        sizes={sizes}
+        loading="eager"
+        alt="A floating etched dollar"
+      />
+    </div>
+  </div>
+</section>
+
+<noscript>
+  <style>
+    #floating-asset {
+      display: block;
+    }
+  </style>
+</noscript>
+
+<style>
+  @keyframes float {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 30px, 0);
+    }
+  }
+
+  #floating-asset {
+    animation: float 2.5s ease-in-out infinite alternate;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #floating-asset {
+      animation: none !important;
+    }
+
+    :global(#starfield) {
+      display: none;
+    }
+  }
+</style>
